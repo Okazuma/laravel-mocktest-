@@ -218,11 +218,11 @@
         background-color: #d3d3d3;
     }
 
-    .edit-group {
+    .edit__group {
         margin: 0 auto;
     }
 
-    .purchase-price {
+    .purchase--price {
         display: flex;
         justify-content: space-between;
         margin: 10% 0;

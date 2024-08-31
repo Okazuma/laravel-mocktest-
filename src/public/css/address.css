@@ -57,7 +57,7 @@
 
 
 @media (max-width:768px){
-    .form-group {
+    .form__group {
         width: 80%;
     }
 }

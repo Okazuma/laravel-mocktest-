@@ -19,7 +19,7 @@
     <header class="header">
         <div class="header__inner">
             @section('logo')
-                <a class="header-logo" href="/"><img src="{{ asset('images/logo.svg') }}" alt=""></a>
+                <a class="header--logo" href="/"><img src="{{ asset('images/logo.svg') }}" alt=""></a>
             @show
 
             @section('search')

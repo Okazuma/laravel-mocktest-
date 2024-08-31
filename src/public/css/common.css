@@ -16,11 +16,11 @@
     align-items: center;
 }
 
-.header-logo {
+.header--logo {
     width: 30%;
 }
 
-.header-logo img {
+.header--logo img {
     width: 100%;
 }
 
@@ -78,7 +78,7 @@
         align-items: center;
     }
 
-    .header-logo {
+    .header--logo {
         flex-basis: 44%;
         order: 1;
         padding: 2%;
