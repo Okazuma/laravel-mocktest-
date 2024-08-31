@@ -1,0 +1,49 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+use Illuminate\Support\Facades\Http;
+use App\Models\Item;
+use App\Models\User;
+
+class StripeControllerTest extends TestCase
+{
+    use RefreshDatabase;
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+
+    //  クレジットカード選択でstripeにリダイレクトされることを確認するテストーーーーーーーーーー
+    public function test_create_checkout_session()
+    {
+        Http::fake([
+            'api.stripe.com/v1/checkout/sessions' => Http::response([
+                'id' => 'cs_test_4fH3v9FqFBlE2pQ33k8o3pEjH5j2MfIYF2pTn2d3',
+                'url' => 'https://fake-url.com',
+            ], 200),
+        ]);
+        $user = User::factory()->create();
+
+        $item = Item::create([
+            'user_id' => $user->id,
+            'name' => 'Test Item',
+            'item_image' => '',
+            'price' => 1000,
+            'description' => 'Test description',
+            'condition' => '良好',
+        ]);
+        $this->actingAs($user);
+        $response = $this->post('/purchase',[
+            'payment_method_id' => 1,
+            'item_id' => $item->id,
+            'item_name' => $item->name,
+        ]);
+
+        $response->assertRedirectContains('https://checkout.stripe.com');
+    }
+}

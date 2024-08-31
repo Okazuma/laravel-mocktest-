@@ -1,0 +1,32 @@
+.session__alert {
+    width: 100%;
+    color: black
+}
+
+.session__alert--success {
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 8px;
+}
+
+.title {
+    text-align: center;
+    padding: 24px;
+    margin:40px auto 40px;
+}
+
+.back__button {
+    width: 80px;
+    display: block;
+    text-align: center;
+    margin: 16px auto;
+    padding: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 3px;
+    background: #eb4e00;
+}

@@ -1,0 +1,168 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 36px;
+}
+
+.search--results{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.search--image {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 20%;
+    aspect-ratio: 1;
+}
+
+.search--image img{
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.images{
+    width: 50%;
+    margin-top: 60px;
+    padding: 4%;
+}
+
+.item__image{
+    width: 80%;
+    aspect-ratio: 0.9;
+    background-color: #d3d3d3;
+    margin: 0 auto;
+}
+
+.item__image img{
+    width: 100%;
+}
+
+.detail{
+    width: 50%;
+    margin-top: 60px;
+    padding: 4%;
+}
+
+.item__name{
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.price{
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.item--price {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.icons {
+    display: flex;
+}
+
+.like{
+    margin-right: 16px;
+}
+
+.like-count{
+    display: block;
+    text-align: center;
+}
+
+.comment__button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.comment__button i {
+    color: black;
+    margin: 0;
+}
+
+.comment--count{
+    display: block;
+    text-align: center;
+}
+
+.item__name__text{
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.purchase__button {
+    margin: 40px auto 40px;
+    padding: 4px 0;
+    display: block;
+    background: #eb4e00;
+    color: #ffffff;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.item__title {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.detail__description {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.item--about{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.detail__title{
+    margin-right: 4%;
+    font-size: 14px;
+}
+
+.detail__category {
+    font-size: 14px;
+}
+
+.detail__condition{
+    font-size: 14px;
+}
+
+
+
+@media (max-width:768px) {
+    .inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .images {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .detail {
+        width: 100%;
+        margin-top: 24px;
+    }
+}
