@@ -2,12 +2,12 @@
     @if(count($items) > 0)
         <div class="search--results">
             @foreach($items as $item)
-                <a class="search--image" href="{{route('detail', $item->id)}}">
-                @if ($item->item_image)
-                    <img src="{{ asset('storage/images/' . basename($item->item_image)) }}" alt="">
-                @else
-                    <img alt="">
-                @endif
+                <a class="search__image" href="{{route('detail', $item->id)}}">
+                    @if ($item->item_image)
+                        <img src="{{ asset('storage/images/' . basename($item->item_image)) }}" alt="">
+                    @else
+                        <img alt="">
+                    @endif
                 </a>
             @endforeach
         </div>
