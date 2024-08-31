@@ -59,8 +59,6 @@
     width: 100%;
 }
 
-
-
 .detail {
     width: 50%;
     margin-top: 60px;
@@ -131,7 +129,6 @@
     display: flex;
     margin-bottom: 30px;
 }
-
 
 .comments--user{
     display: flex;
@@ -233,12 +230,17 @@
 .pagination p {
     display: none;
 }
+
 .pagination span{
     display: none;
 }
 
 .pagination svg.w-5.h-5 {
     display:none;
+}
+
+.error-message {
+    color: red;
 }
 
 
