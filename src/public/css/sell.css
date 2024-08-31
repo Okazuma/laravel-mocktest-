@@ -83,6 +83,12 @@
     line-height: 1.5;
 }
 
+.detail-text{
+    width: 100%;
+    font-size: 20px;
+    height: 96px;
+}
+
 .detail-input::placeholder {
     color: black;
     opacity: 1;
@@ -115,6 +121,10 @@
     border-top: 1px solid grey;
     margin: 0px auto;
     padding: 4px;
+}
+
+.error-message {
+    color: red;
 }
 
 

@@ -16,7 +16,7 @@
     @else
         <div class="inner">
             <div class="images">
-                <div class="images--item">
+                <div class="images__item">
                     @if ($item->item_image)
                             <img src="{{ asset('storage/images/' . basename($item->item_image)) }}" alt="">
                         @else
@@ -26,7 +26,7 @@
             </div>
 
             <div class="detail">
-                <h2 class="item-name">{{$item->name}}</h2>
+                <h2 class="item__name">{{$item->name}}</h2>
                 <span class="item-name-text">ブランド名</span>
 
                 <div class="price">
@@ -41,7 +41,7 @@
                         <button class="comment__button" onclick="window.location.href='{{ route('comment', $item->id) }}'">
                             <i class="fa-regular fa-comment"></i>
                         </button>
-                        <span class="comment-count">{{ $commentCount }}</span>
+                        <span class="comment--count">{{ $commentCount }}</span>
                     </div>
                 </div>
                 @if($comments->isEmpty())
@@ -51,15 +51,15 @@
                         @php
                             $isOwnComment = $comment->user_id === auth()->id();
                         @endphp
-                        <div class="comments-user {{ $isOwnComment ? 'own-comment' : '' }}">
-                            <div class="profile-image">
+                        <div class="comments--user {{ $isOwnComment ? 'own-comment' : '' }}">
+                            <div class="profile__image">
                                 @if($comment->user->profile_image)
                                     <img src="{{ asset('storage/profile/' . basename($comment->user->profile_image)) }}" alt="">
                                 @else
                                     <img alt="">
                                 @endif
                             </div>
-                            <span class="comment-user">{{ $comment->user->name }}</span>
+                            <span class="comment--user">{{ $comment->user->name }}</span>
                             @if($isOwnComment)
                             <form class="delete--comment" action="{{ route('comment.destroy', $comment->id) }}" method="POST" style="display:inline;">
                             @csrf
@@ -70,8 +70,8 @@
                             @endif
                         </div>
 
-                        <div class="comments-content {{ $isOwnComment ? 'own-comment-content' : '' }}">
-                            <span class="comments-detail">{{ $comment->content }}</span>
+                        <div class="comments__content {{ $isOwnComment ? 'own-comment-content' : '' }}">
+                            <span class="comments__detail">{{ $comment->content }}</span>
                         </div>
                     @endforeach
                         <div class="pagination">
@@ -81,7 +81,7 @@
                 <form class="" action="{{route('store.comment',$item->id)}}" method="post">
                     @csrf
                     <textarea class="comment__form" name="content" placeholder=""></textarea>
-                    <button class="comment_button" type="submit">コメントを送信する</button>
+                    <button class="submit__button" type="submit">コメントを送信する</button>
                 </form>
             </div>
         </div>

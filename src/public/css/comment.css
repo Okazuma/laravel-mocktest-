@@ -48,30 +48,18 @@
     padding: 4%;
 }
 
-.images--item {
+.images__item {
     width: 80%;
     aspect-ratio: 0.9;
     margin: 0 auto;
     background-color: #d3d3d3;
 }
 
-.images--item img {
+.images__item img {
     width: 100%;
 }
 
-.purchase__button {
-    margin: 40px auto 40px;
-    padding: 4px 0;
-    display: block;
-    background: #eb4e00;
-    color: #ffffff;
-    width: 100%;
-    border: none;
-    border-radius: 3px;
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-}
+
 
 .detail {
     width: 50%;
@@ -79,7 +67,7 @@
     padding: 4%;
 }
 
-.item-name {
+.item__name {
     margin-top: 0px;
     margin-bottom: 8px;
     font-size: 24px;
@@ -116,7 +104,7 @@
     margin: 0;
 }
 
-.comment-count {
+.comment--count {
     display: block;
     text-align: center;
 }
@@ -128,7 +116,7 @@
     font-size: 14px;
 }
 
-.item-title {
+.item--title {
     margin-top: 0px;
     margin-bottom: 30px;
     font-size: 20px;
@@ -144,36 +132,18 @@
     margin-bottom: 30px;
 }
 
-.detail-title {
-    margin-right: 4%;
-    font-size: 14px;
-}
 
-.detail-description {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 30px;
-}
-
-.detail-category {
-    font-size: 14px;
-}
-
-.detail-condition {
-    font-size: 14px;
-}
-
-.comments-user{
+.comments--user{
     display: flex;
     margin-bottom: 4px;
 }
 
-.comments-user.own-comment{
+.comments--user.own-comment{
     display: flex;
-    flex-direction: row-reverse
+    flex-direction: row-reverse;
 }
 
-.profile-image {
+.profile__image {
     background: #e0e0e0;
     width: 24px;
     height: 24px;
@@ -181,13 +151,14 @@
     margin-right: 8px;
 }
 
-.profile-image img{
+.profile__image img{
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
     border-radius: 50%;
+    display: block;
 }
 
-.comment-user{
+.comment--user{
     margin: 0 4%;
 }
 
@@ -196,7 +167,7 @@
 }
 
 .delete--comment--button {
-    color: white;
+    color: black;
     background-color: transparent;
     border: none;
     display: flex;
@@ -206,21 +177,16 @@
     cursor: pointer;
 }
 
-.comments-content {
+.comments__content {
     background: #e0e0e0;
     margin-bottom: 16px;
     border-radius: 3px;
     padding: 4px;
 }
 
-.comments-detail {
+.comments__detail {
     border: 1px sold grey;
     margin: 0;
-}
-
-.own-comment {
-    background: black;
-    color: lightgrey;
 }
 
 .comment__form{
@@ -228,7 +194,7 @@
     height: 100px;
 }
 
-.comment_button{
+.submit__button{
     display: block;
     width: 100%;
     margin-top: 16px;

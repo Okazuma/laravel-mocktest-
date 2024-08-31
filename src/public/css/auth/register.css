@@ -18,17 +18,17 @@
     padding: 24px;
 }
 
-.form-group {
+.form__group {
     margin: 0 auto;
     padding: 16px;
     width: 50%;
 }
 
-.form-title {
+.form__title {
     display: block;
 }
 
-.form-input {
+.form--input {
     margin: 0 auto;
     display: block;
     width: 100%;
@@ -57,6 +57,10 @@
     text-decoration: none;
     border: none;
     border-radius: 3px;
+}
+
+.error-message {
+    color: red;
 }
 
 

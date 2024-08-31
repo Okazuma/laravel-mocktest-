@@ -24,6 +24,11 @@
                     <div class="file-upload">
                         <label for="file-upload" class="custom-file-upload">画像を選択する</label>
                         <input id="file-upload" type="file" name="item_image" value="{{old('item_image')}}">
+                        @error('item_image')
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -34,11 +39,21 @@
                 <div class="item-group">
                     <label class="detail-title" for="category_id">カテゴリー</label>
                     @livewire('multi-select')
+                    @error('selectedCategories') <!-- バリデーションエラー表示 -->
+                        <div class="error-message">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="item-group">
                     <label class="detail-title" for="condition">商品の状態</label>
                     <input class="detail-input" type="text" name="condition" id="condition" value="{{old('condition')}}">
+                    @error('condition')
+                        <div class="error-message">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
 
@@ -48,10 +63,20 @@
                 <div class="item-group">
                     <label class="detail-title" for="name">商品名</label>
                     <input class="detail-input" type="text" name="name" id="name" value="{{old('name')}}">
+                    @error('name')
+                        <div class="error-message">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="item-group">
                     <label class="detail-title" for="description">商品の説明</label>
-                    <input class="detail-input" type="text" name="description" id="description" value="{{old('description')}}">
+                    <textarea class="detail-text" type="text" name="description" id="description">{{old('description')}}</textarea>
+                    @error('description')
+                        <div class="error-message">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
 
@@ -59,6 +84,11 @@
                 <h2 class="item-title">販売価格</h2>
                 <label class="detail-title" for="price">販売価格</label>
                 <input class="detail-input" type="number" name="price" id="price" value="{{old('price')}}" placeholder="￥">
+                @error('price')
+                    <div class="error-message">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <button class="sell__button" type="submit">出品する</button>

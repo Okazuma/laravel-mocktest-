@@ -32,7 +32,7 @@ class ProfileRequest extends FormRequest
         ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
             'profile_image.file' => '画像ファイルを選択してください',

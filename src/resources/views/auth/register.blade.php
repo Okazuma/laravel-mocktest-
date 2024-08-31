@@ -26,20 +26,29 @@
     <form class="register__form" action="{{route('register')}}" method="post">
     @csrf
 
-        <div class="form-group">
-            <span class="form-title">メールアドレス</span>
-            <input class="form-input" type="text" name="email" value="{{ old('email') }}" autocomplete="email">
+        <div class="form__group">
+            <span class="form__title">メールアドレス</span>
+            <input class="form--input" type="text" name="email" value="{{ old('email') }}" autocomplete="email">
+            @error('email')
+                <div class="error-message">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
-        <div class="form-group">
-            <span class="form-title">パスワード</span>
-            <input class="form-input" type="text" name="password" value="" autocomplete="password">
+        <div class="form__group">
+            <span class="form__title">パスワード</span>
+            <input class="form--input" type="text" name="password" value="" autocomplete="password">
+            @error('password')
+                <div class="error-message">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form__group">
             <button class="register__button" type="submit">登録する</button>
         </div>
-    
     </form>
 
     <a class="login__button" href="{{route('loginView')}}">ログインはこちら</a>

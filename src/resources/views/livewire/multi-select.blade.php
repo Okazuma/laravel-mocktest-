@@ -1,5 +1,10 @@
 <div class="multi__select">
-    <input class="detail-input" type="text" name="" id="category_id" value="{{ implode(', ', array_map(fn($id) => $options[$id], $selectedOptions)) }}" wire:click="toggleCategoryList" readonly>
+    <input class="detail-input" type="text" name="category_id" id="category_id" value="{{ implode(', ', array_map(fn($id) => $options[$id], $selectedOptions)) }}" wire:click="toggleCategoryList" readonly>
+    @error('category_id')
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
+                        @enderror
 
     @if($showCategoryList)
         <div class="category-list">

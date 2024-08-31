@@ -36,6 +36,7 @@ class PurchaseController extends Controller
 
     public function updateAddress(AddressRequest $request)
     {
+        // dd($request->all());
         $user = Auth::user();
         $purchase = Purchase::updateOrCreate(
             ['user_id' => $user->id, 'item_id' => $request->input('item_id')],
