@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'item_image' => ['file', 'mimes:jpeg,png,jpg', 'max:5120'],
+            'profile_image' => ['file', 'mimes:jpeg,png,jpg', 'max:5120'],
             'name' => ['required','string','max:50'],
             'postal_code' => ['required','string','max:10'],
             'address' => ['required','string','max:100'],

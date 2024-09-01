@@ -23,7 +23,7 @@
                 <div class="image-block">
                     <div class="file-upload">
                         <label for="file-upload" class="custom-file-upload">画像を選択する</label>
-                        <input id="file-upload" type="file" name="item_image" value="{{old('item_image')}}">
+                        <input id="file-upload" type="file" name="item_image" value="">
                         @error('item_image')
                             <div class="error-message">
                                 {{ $message }}
