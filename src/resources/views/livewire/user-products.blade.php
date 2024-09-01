@@ -15,7 +15,7 @@
                     @foreach($sellingItems as $item)
                         <a class="item__image" href="{{route('detail', $item->id)}}">
                             @if ($item->item_image)
-                                <img src="{{ asset('storage/images/' . basename($item->item_image)) }}" alt="">
+                                <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="Item Image">
                             @else
                                 <img alt="">
                             @endif
@@ -31,7 +31,7 @@
                     @foreach($boughtItems as $item)
                         <a class="item__image" href="{{route('detail', $item->id)}}">
                             @if ($item->item_image)
-                                <img src="{{ asset('storage/images/' . basename($item->item_image)) }}" alt="">
+                                <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="Item Image">
                             @else
                                 <img alt="">
                             @endif

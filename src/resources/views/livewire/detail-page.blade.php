@@ -16,7 +16,7 @@
             <div class="images">
                 <div class="item__image">
                     @if ($item->item_image)
-                            <img src="{{ Storage::disk('s3')->url('images/' . basename($item->item_image)) }}" alt="">
+                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="Item Image">
                         @else
                             <img alt="">
                         @endif

@@ -20,7 +20,6 @@
                                 <a class="item__image" href="{{route('detail', $item->id)}}">
                                     @if ($item->item_image)
                                         <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="Item Image">
-
                                     @else
                                         <img alt="">
                                     @endif
