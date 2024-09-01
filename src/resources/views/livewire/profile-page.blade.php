@@ -20,7 +20,9 @@
                 <div class="header__heading">
                     <div class="profile__image">
                         @if ($user->profile_image)
-                            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="">
+                            
+                            <img src="{{ Storage::disk('s3')->url($user->profile_image) }}" alt="">
+
                         @else
                             <img class="no-image">
                         @endif
