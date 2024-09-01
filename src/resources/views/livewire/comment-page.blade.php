@@ -54,7 +54,7 @@
                         <div class="comments--user {{ $isOwnComment ? 'own-comment' : '' }}">
                             <div class="profile__image">
                                 @if($comment->user->profile_image)
-                                    <img src="{{ asset('storage/profile/' . basename($comment->user->profile_image)) }}" alt="">
+                                    <img src="{{ Storage::disk('s3')->url($user->profile_image) }}" alt="">
                                 @else
                                     <img alt="">
                                 @endif
