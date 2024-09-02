@@ -4,7 +4,7 @@ executors:
   docker-executor:
     docker:
       - image: cimg/php:8.3
-    working_directory: /workspace
+    working_directory: ~/project
 
 jobs:
   build:
