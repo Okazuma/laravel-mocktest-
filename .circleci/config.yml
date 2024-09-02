@@ -10,7 +10,7 @@ jobs:
           name: Print working directory
           command: pwd
       - run:
-          name: List files in project directory
+          name: List files in /var/www
           command: ls -la /var/www/
       - run:
           name: Install PHP dependencies
