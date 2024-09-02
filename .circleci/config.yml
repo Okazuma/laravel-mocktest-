@@ -19,10 +19,9 @@ jobs:
             sudo chmod +x /usr/local/bin/docker-compose
       - run:
           name: Check if default.conf exists
-          command: ls -la /home/circleci/project/docker/nginx/default.conf || echo "default.conf not found"
-      - run:
-          name: Check if default.conf exists
-          command: ls -la /home/circleci/project/docker/nginx/default.conf
+          command: |
+            echo "Checking for default.conf in the host:"
+            ls -la /home/circleci/project/docker/nginx/default.conf || echo "default.conf not found"
       - run:
           name: Start Docker Compose
           command: docker compose up -d --build
