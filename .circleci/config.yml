@@ -8,16 +8,16 @@ jobs:
       - checkout
       - run:
           name: List files in project directory
-          command: ls -la src
+          command: ls -la /var/www/
       - run:
           name: Install PHP dependencies
-          command: composer install --no-interaction --prefer-dist --optimize-autoloader --working-dir=src
+          command: composer install --no-interaction --prefer-dist --optimize-autoloader --working-dir=/var/www/
       - run:
           name: Install Node.js dependencies
           command: npm install
       - run:
           name: Run tests
-          command: php artisan test --working-dir=src
+          command: php artisan test
 
   deploy:
     docker:
