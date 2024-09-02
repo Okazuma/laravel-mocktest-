@@ -1,27 +1,36 @@
 version: 2.1
 
+executors:
+  docker-executor:
+    docker:
+      - image: circleci/php:8.3-node
+    working_directory: /workspace
+
 jobs:
   build:
-    docker:
-      - image: cimg/php:8.3
+    executor: docker-executor
     steps:
       - checkout
       - run:
-          name: Print working directory
-          command: pwd
+          name: Install Docker Compose
+          command: |
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+      - run:
+          name: Start Docker Compose
+          command: docker-compose up -d
       - run:
           name: List files in /var/www/ inside the container
-          command: |
-            docker compose run --rm php ls -la /var/www/
+          command: docker-compose exec php ls -la /var/www/
       - run:
           name: Install PHP dependencies
-          command: composer install --no-interaction --prefer-dist --optimize-autoloader --working-dir=/var/www/
+          command: docker-compose exec php composer install --no-interaction --prefer-dist --optimize-autoloader
       - run:
           name: Install Node.js dependencies
-          command: npm install
+          command: docker-compose exec php npm install
       - run:
           name: Run tests
-          command: php artisan test
+          command: docker-compose exec php php artisan test
 
   deploy:
     docker:
@@ -33,7 +42,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y rsync
-            rsync -avz --exclude '.env' --exclude 'vendor' ./ 52.69.67.231:/home/ec2-user/laravel-mocktest3
+            rsync -avz --exclude '.env' --exclude 'vendor' ./ ec2-user@52.69.67.231:/home/ec2-user/laravel-mocktest3
             ssh ec2-user@52.69.67.231 "cd /home/ec2-user/laravel-mocktest3 && composer install --no-dev && php artisan migrate --force"
 
 workflows:
