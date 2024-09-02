@@ -3,22 +3,25 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/php:8.3
+      - image: circleci/php:8.3-fpm
     steps:
       - checkout
       - run:
+          name: List files in project directory
+          command: ls -la src
+      - run:
           name: Install PHP dependencies
-          command: composer install --no-interaction --prefer-dist --optimize-autoloader
+          command: composer install --no-interaction --prefer-dist --optimize-autoloader --working-dir=src
       - run:
           name: Install Node.js dependencies
           command: npm install
       - run:
           name: Run tests
-          command: php artisan test
+          command: php artisan test --working-dir=src
 
   deploy:
     docker:
-      - image: cimg/php:8.3
+      - image: circleci/php:8.3-fpm
     steps:
       - checkout
       - run:
