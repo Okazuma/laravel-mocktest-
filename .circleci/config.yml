@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Print working directory
+          command: pwd
+      - run:
           name: List files in project directory
           command: ls -la /var/www/
       - run:
