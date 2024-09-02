@@ -27,6 +27,9 @@ jobs:
           name: List files in /var/www/ inside the container
           command: docker compose exec php ls -la /var/www/
       - run:
+          name: Verify nginx config file exists in container
+          command: docker compose exec nginx ls -la /etc/nginx/conf.d/
+      - run:
           name: Install PHP dependencies
           command: docker compose exec php composer install --no-interaction --prefer-dist --optimize-autoloader
       - run:
