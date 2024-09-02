@@ -11,6 +11,9 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
+      - setup_remote_docker:  # Dockerデーモンを起動するための設定
+          version: 27.1.1  # 必要に応じてDockerのバージョンを指定
+          docker_layer_caching: true  # Dockerレイヤーキャッシングを有効化（オプション）
       - run:
           name: Install Docker Compose
           command: |
