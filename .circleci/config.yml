@@ -22,7 +22,7 @@ jobs:
           command: ls -la ~/project/docker/nginx/default.conf
       - run:
           name: Start Docker Compose
-          command: docker compose up --build
+          command: docker compose up -d --build
       - run:
           name: Copy nginx config file to container
           command: |
