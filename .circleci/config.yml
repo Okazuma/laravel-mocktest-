@@ -3,7 +3,7 @@ version: 2.1
 executors:
   docker-executor:
     docker:
-      - image: circleci/php:8.3-node
+      - image: cimg/php:8.3
     working_directory: /workspace
 
 jobs:
