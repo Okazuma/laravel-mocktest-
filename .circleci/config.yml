@@ -18,19 +18,19 @@ jobs:
             sudo chmod +x /usr/local/bin/docker-compose
       - run:
           name: Start Docker Compose
-          command: docker-compose up -d
+          command: docker compose up -d
       - run:
           name: List files in /var/www/ inside the container
-          command: docker-compose exec php ls -la /var/www/
+          command: docker compose exec php ls -la /var/www/
       - run:
           name: Install PHP dependencies
           command: docker-compose exec php composer install --no-interaction --prefer-dist --optimize-autoloader
       - run:
           name: Install Node.js dependencies
-          command: docker-compose exec php npm install
+          command: docker compose exec php npm install
       - run:
           name: Run tests
-          command: docker-compose exec php php artisan test
+          command: docker compose exec php php artisan test
 
   deploy:
     docker:
