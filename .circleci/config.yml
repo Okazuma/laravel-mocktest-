@@ -10,8 +10,9 @@ jobs:
           name: Print working directory
           command: pwd
       - run:
-          name: List files in /var/www
-          command: ls -la /var/www/
+          name: List files in /var/www/ inside the container
+          command: |
+            docker compose run --rm php ls -la /var/www/
       - run:
           name: Install PHP dependencies
           command: composer install --no-interaction --prefer-dist --optimize-autoloader --working-dir=/var/www/
