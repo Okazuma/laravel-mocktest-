@@ -4,7 +4,7 @@
             @foreach($items as $item)
                 <a class="search__image" href="{{route('detail', $item->id)}}">
                     @if ($item->item_image)
-                        <img src="{{ Storage::disk('s3')->url('images/' . basename($item->item_image)) }}" alt="">
+                        <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                     @else
                         <img alt="">
                     @endif
@@ -16,7 +16,7 @@
             <div class="images">
                 <div class="item__image">
                     @if ($item->item_image)
-                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="Item Image">
+                            <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                         @else
                             <img alt="">
                         @endif

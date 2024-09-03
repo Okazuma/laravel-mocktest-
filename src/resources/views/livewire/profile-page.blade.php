@@ -4,7 +4,7 @@
             @foreach($items as $item)
                 <a class="item__image" href="{{route('detail', $item->id)}}">
                     @if ($item->item_image)
-                        <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="Item Image">
+                        <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
                     @else
                         <img alt="">
                     @endif
@@ -20,9 +20,9 @@
                 <div class="header__heading">
                     <div class="profile__image">
                         @if ($user->profile_image)
-                            <img src="{{ Storage::disk('s3')->url($user->profile_image) }}" alt="">
+                            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="">
                         @else
-                            <img class="no-image">
+                            <img alt="">
                         @endif
                     </div>
                     <div class="file-upload">
