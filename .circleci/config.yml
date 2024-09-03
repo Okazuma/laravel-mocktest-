@@ -11,34 +11,32 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
       - run:
           name: Install Docker Compose
           command: |
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
       - run:
-          name: Create symbolic link for default.conf
-          command: |
-            ln -s ~/project/docker/nginx/default.conf ~/project/default.conf
-      - run:
           name: Start Docker Compose
-          command: docker compose up -d --build
+          command: docker compose -f docker-test/docker-compose.ci.yml up -d --build
       - run:
           name: Verify nginx config file exists in container and check permissions
-          command: docker compose exec nginx ls -la /etc/nginx/conf.d/
+          command: docker compose -f docker-test/docker-compose.ci.yml exec nginx ls -la /etc/nginx/conf.d/
       - run:
           name: List files in /var/www/ inside the container
-          command: docker compose exec php ls -la /var/www/
+          command: docker compose -f docker-test/docker-compose.ci.yml exec php ls -la /var/www/
       - run:
           name: Install PHP dependencies
-          command: docker compose exec php bash -c "cd /var/www && composer install --no-interaction --prefer-dist --optimize-autoloader"
+          command: docker compose -f docker-test/docker-compose.ci.yml exec php bash -c "cd /var/www && composer install --no-interaction --prefer-dist --optimize-autoloader"
       - run:
           name: Install Node.js dependencies
-          command: docker compose exec php npm install
+          command: docker compose -f docker-test/docker-compose.ci.yml exec php npm install
       - run:
           name: Run tests
-          command: docker compose exec php php artisan test
+          command: docker compose -f docker-test/docker-compose.ci.yml exec php php artisan test
 
   deploy:
     docker:

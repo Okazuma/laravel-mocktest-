@@ -14,7 +14,7 @@ RUN apt update \
     libjpeg-dev \
     libfreetype6-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo_mysql zip 
+    && docker-php-ext-install gd pdo_mysql zip
 
 
 # Composerをインストール
