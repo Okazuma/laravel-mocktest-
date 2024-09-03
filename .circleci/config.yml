@@ -22,7 +22,7 @@ jobs:
           command: docker compose up -d --build
       - run:
           name: Verify nginx config file exists in container and check permissions
-          command: docker compose -f docker-test/docker-compose.ci.yml exec nginx ls -la /etc/nginx/conf.d/
+          command: docker compose exec nginx ls -la /etc/nginx/conf.d/
       - run:
           name: List files in /var/www/ inside the container
           command: docker compose exec php ls -la /var/www/
@@ -31,10 +31,10 @@ jobs:
           command: docker compose exec php bash -c "cd /var/www && composer install --no-interaction --prefer-dist --optimize-autoloader"
       - run:
           name: Install Node.js dependencies
-          command: docker compose -f docker-test/docker-compose.ci.yml exec php npm install
+          command: docker compose exec php npm install
       - run:
           name: Run tests
-          command: docker compose -f docker-test/docker-compose.ci.yml exec php php artisan test
+          command: docker compose exec php php artisan test
 
   deploy:
     docker:
