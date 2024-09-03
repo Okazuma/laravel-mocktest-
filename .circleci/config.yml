@@ -18,7 +18,7 @@ jobs:
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
       - run:
-          name: Check if default.conf exists and its permissions
+          name: Check if default.conf exists and its permissions on CircleCI
           command: |
             echo "Checking for default.conf and its permissions on CircleCI:"
             ls -la ./docker/nginx/default.conf || echo "default.conf not found"
