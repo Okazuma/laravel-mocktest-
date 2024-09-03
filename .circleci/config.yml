@@ -22,7 +22,7 @@ jobs:
           command: docker compose -f docker-test/docker-compose.ci.yml up -d --build
       - run:
           name: Verify nginx config file exists in container and check permissions
-          command: docker compose exec nginx ls -la /etc/nginx/conf.d/
+          command: docker compose exec nginx ls -la /etc/nginx/conf.d/default.conf
       - run:
           name: List files in /var/www/ inside the container
           command: docker compose exec php ls -la /var/www/
