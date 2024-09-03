@@ -14,9 +14,7 @@ RUN apt update \
     libjpeg-dev \
     libfreetype6-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo_mysql zip \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick
+    && docker-php-ext-install gd pdo_mysql zip 
 
 
 # Composerをインストール
