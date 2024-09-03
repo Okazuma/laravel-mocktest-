@@ -42,4 +42,5 @@ class StripeController extends Controller
         ]);
         return redirect()->away($session->url);
     }
+
 }

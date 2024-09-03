@@ -9,7 +9,7 @@ class DetailPage extends Component
 {
     public $searchTerm = '';
     public $items = [];
-    public $item; // アイテムの詳細情報
+    public $item;
 
     protected $listeners = ['searchUpdated' => 'updateSearchTerm'];
 

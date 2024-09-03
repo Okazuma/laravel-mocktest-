@@ -21,7 +21,6 @@ class PurchasePage extends Component
     public $selectedPaymentMethod;
     public $showSelect = false;
 
-
     protected $listeners = ['searchUpdated' => 'updateSearchTerm'];
 
 

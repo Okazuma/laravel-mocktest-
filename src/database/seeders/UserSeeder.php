@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'postal_code' => '000-0000',
             'address' => '東京都渋谷区千駄ヶ谷1-2-3',
             'building' => '千駄ヶ谷マンション',
-            'profile_image' => NULL, // デフォルトのプロフィール画像
+            'profile_image' => NULL,
         ]);
 
         User::create([
@@ -41,22 +41,11 @@ class UserSeeder extends Seeder
             'name' => '東京次郎',
             'email' => 'test2@example.com',
             'password' => bcrypt('22222222'),
-            'postal_code' => '131-0045',
-            'address' => '東京都墨田区押上1丁目1-2',
-            'building' => '東京スカイツリー',
-            'profile_image' => '',
-        ]);
-
-        User::create([
-            'name' => '東京三郎',
-            'email' => 'test3@example.com',
-            'password' => bcrypt('33333333'),
             'postal_code' => '',
             'address' => '',
             'building' => '',
             'profile_image' => '',
         ]);
-
 
         $admin->assignRole('admin');
     }

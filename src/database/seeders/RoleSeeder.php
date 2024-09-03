@@ -17,11 +17,9 @@ class RoleSeeder extends Seeder
     {
         $adminRole = Role::create(['name' => 'admin']);
         $userRole = Role::create(['name' => 'user']);
-        
-        // パーミッションの作成
+
         $manageUsersPermission = Permission::create(['name' => 'manage users']);
 
-        // ロールにパーミッションを付与
         $adminRole->givePermissionTo($manageUsersPermission);
     }
 }

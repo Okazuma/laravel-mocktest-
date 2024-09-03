@@ -46,9 +46,8 @@ class ItemsSeeder extends Seeder
 
         foreach ($items as $itemData) {
             $item = Item::create($itemData);
-            $item->categories()->attach([1,12]);  // カテゴリーID 1 をすべてのアイテムに関連付ける
+            $item->categories()->attach([1,12]);
         }
-
 
     }
 }

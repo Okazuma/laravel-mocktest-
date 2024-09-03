@@ -36,11 +36,9 @@ class AddressRequest extends FormRequest
             'postal_code.required' => '郵便番号を入力してください',
             'postal_code.string' => '文字列で入力してください',
             'postal_code.max' => '10文字以内で入力してください',
-
             'address.required' => '住所を入力してください',
             'address.string' => '文字列で入力してください',
             'address.max' => '100文字以内で入力してください',
-
             'building.string' => '文字列で入力してください',
             'building.max' => '50文字以内で入力してください',
         ];

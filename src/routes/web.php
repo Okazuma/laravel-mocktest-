@@ -22,30 +22,50 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+// ーーーーーーーーーー会員登録、ログイン関連のルートーーーーーーーーーー
 Route::get('/register',[RegisterController::class,'showRegister'])->name('registerView');
+
 Route::post('/register',[RegisterController::class,'register'])->name('register');
+
 Route::get('/login',[AuthController::class,'showLogin'])->name('loginView');
+
 Route::post('/login',[AuthController::class,'login'])->name('login');
 
 
 
+
+// ーーーーーーーーーートップページの表示(ゲストユーザー可能)ーーーーーーーーーー
 Route::get('/',[MarketController::class,'index'])->name('index');
 
 Route::get('/detail/{id}',[MarketController::class,'showDetail'])->name('detail');
 
 
+
+
+// ーーーーーーーーーー商品出品のルートーーーーーーーーーー
 Route::middleware(['auth'])->group(function () {
     Route::get('/sell',[MarketController::class,'showSell'])->name('sell');
+
     Route::post('/sell/items',[MarketController::class,'store'])->name('item.sell');
+});
 
 
+
+
+// ーーーーーーーーーーProfile関連のルートーーーーーーーーーー
+Route::middleware(['auth'])->group(function () {
     Route::get('/mypage',[MypageController::class,'showMypage'])->name('mypage');
 
     Route::get('/profile/{id}',[MypageController::class,'showProfile'])->name('profile');
 
     Route::patch('/profile/{id}',[MypageController::class,'updateProfile'])->name('updateProfile');
+});
 
 
+
+
+// ーーーーーーーーーーコメント関連のルートーーーーーーーーーー
+Route::middleware(['auth'])->group(function () {
     Route::get('/comment/{id}',[CommentController::class,'showComment'])->name('comment');
 
     Route::post('/comment/{id}',[CommentController::class,'comment'])->name('store.comment');
@@ -56,8 +76,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-// ーーーーーーーーーー購入処理のルートーーーーーーーーーー
-
+// ーーーーーーーーーー商品購入処理のルートーーーーーーーーーー
 Route::get('/purchase/{id}',[PurchaseController::class,'purchase'])->middleware(['auth','checkProfile'])->name('purchase');
 
 Route::post('/purchase', [PurchaseController::class, 'processPurchase'])->name('purchase.done');
@@ -70,7 +89,6 @@ Route::post('/update-address', [PurchaseController::class, 'updateAddress'])->na
 
 
 // ーーーーーーーーーーstripe決済ーーーーーーーーーー
-
 Route::post('/checkout/session', [StripeController::class, 'createCheckoutSession'])->name('checkout.session');
 
 Route::get('/checkout/success', function () {
@@ -84,7 +102,6 @@ Route::get('/checkout/cancel', function () {
 Route::get('/checkout/success', [PurchaseController::class, 'completePurchase'])->name('checkout.success');
 
 Route::get('/checkout/cancel', [PurchaseController::class, 'completePurchase'])->name('checkout.cancel');
-
 
 
 
@@ -105,7 +122,3 @@ Route::middleware(['admin'])->group(function () {
 
     Route::post('/send/notification', [AdminController::class, 'sendNotifyEmail'])->name('admin.send');
 });
-
-
-
-
