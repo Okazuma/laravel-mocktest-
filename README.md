@@ -137,7 +137,7 @@
 
 ER図
 =====
-<img width="650" src="https://github.com/user-attachments/assets/3907bc1e-90c0-4e86-8120-405916e32f04">
+<img width="650" src="https://github.com/user-attachments/assets/bcf8f98d-e2e6-4823-b4ef-3b16eb4abdab">
 
 
 dockerビルド
