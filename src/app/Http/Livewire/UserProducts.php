@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Item;
-use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 
 class UserProducts extends Component

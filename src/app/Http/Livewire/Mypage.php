@@ -4,9 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Item;
-use App\Models\User;
-
-
 
 class Mypage extends Component
 {

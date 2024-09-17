@@ -4,7 +4,7 @@
             @foreach($items as $item)
                 <a class="item__image" href="{{route('detail', $item->id)}}">
                     @if ($item->item_image)
-                        <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                        <img src="{{ asset('storage/' . $user->profile_image) }}" alt="">
                     @else
                         <img alt="">
                     @endif
@@ -64,7 +64,7 @@
                     @enderror
                 </div>
                 <div class="form__group">
-                    <label class="form__title" for="building">建物名</label>
+                    <label class="form__title" for="building">建物名 (任意)</label>
                     <input class="form--input" type="text" name="building" id="building" value="{{$user->building}}" autocomplete="building">
                     @error('building')
                         <div class="error-message">

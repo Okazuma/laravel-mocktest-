@@ -90,7 +90,8 @@
 }
 
 .item__image img {
-    width: 100%;
+    margin: 0 auto;
+    width: auto;
     height: 100%;
     display: block;
     border: none;

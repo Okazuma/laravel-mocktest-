@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Comment;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CommentRequest;
 
