@@ -132,7 +132,7 @@
 
 テーブル設計
 =====
-<img width="650" src="https://github.com/user-attachments/assets/420cdc3c-9ce0-4d64-babd-2c3569c5155d">
+<img width="650" src="https://github.com/user-attachments/assets/f18c661e-b4ff-4832-90a4-b5867bf7fd53">
 
 
 ER図
