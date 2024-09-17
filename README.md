@@ -156,13 +156,16 @@ Laravelの環境構築
 
     2 パッケージのインストール      $composer-install
 
-    3 .envファイルの作成          cp .env.example .env
+    3 .envファイルの作成          $cp .env.example .env
 
     4 アプリケーションキーの生成    $php artisan key:generate
 
     5 マイグレーション            $php artisan migrate
 
     6 シーディング               $php artisan db:seed
+
+    7 シンボリックリンクの生成     $php artisan storage:link
+
 
 
 
