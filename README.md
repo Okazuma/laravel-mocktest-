@@ -132,12 +132,12 @@
 
 テーブル設計
 =====
-<img width="650" src="https://github.com/user-attachments/assets/1c85ab88-ac67-44dd-9cca-8aaeb75f8c6f">
+<img width="650" src="https://github.com/user-attachments/assets/420cdc3c-9ce0-4d64-babd-2c3569c5155d">
 
 
 ER図
 =====
-<img width="650" src="https://github.com/user-attachments/assets/0e81fd31-8e12-4625-9f0f-9a42843d521a">
+<img width="650" src="https://github.com/user-attachments/assets/3907bc1e-90c0-4e86-8120-405916e32f04">
 
 
 dockerビルド
