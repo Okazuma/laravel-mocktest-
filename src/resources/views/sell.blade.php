@@ -48,8 +48,12 @@
 
                 <div class="item-group">
                     <label class="detail-title" for="condition">商品の状態</label>
-                    <input class="detail-input" type="text" name="condition" id="condition" value="{{old('condition')}}">
-                    @error('condition')
+                    <select class="detail-condition" name="condition_id" id="condition">
+                        @foreach ($conditions as $condition)
+                            <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('name')
                         <div class="error-message">
                             {{ $message }}
                         </div>

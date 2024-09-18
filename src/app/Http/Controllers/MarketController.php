@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SellRequest;
+use App\Models\Condition;
 
 class MarketController extends Controller
 {
     public function index()
     {
-        $items = Item::with('categories')->get();
+        $items = Item::with('categories','condition')
+        ->whereDoesntHave('purchasers')
+        ->get();
         return view('index',compact('items'));
     }
 
@@ -25,7 +28,8 @@ class MarketController extends Controller
 
     public function showSell()
     {
-        return view('sell');
+        $conditions = Condition::all();
+        return view('sell',compact('conditions'));
     }
 
 
@@ -45,7 +49,7 @@ class MarketController extends Controller
 
         $item->price = $request->input('price');
         $item->description = $request->input('description');
-        $item->condition = $request->input('condition');
+        $item->condition_id = $request->input('condition_id');
         $item->save();
 
         $categoryIds = $request->input('category_id', []);

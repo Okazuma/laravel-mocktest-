@@ -16,7 +16,7 @@ class DetailPage extends Component
     public function mount($itemId)
     {
         $this->itemId = $itemId;
-        $this->item = Item::with('categories')->findOrFail($itemId);
+        $this->item = Item::with('categories','condition')->findOrFail($itemId);
         $this->commentCount = $this->item->comments()->count();
     }
 

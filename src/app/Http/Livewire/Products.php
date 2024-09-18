@@ -55,6 +55,9 @@ class Products extends Component
         if (!empty($this->searchTerm)) {
             $query->where('name', 'like', '%' . $this->searchTerm . '%');
         }
+
+        $query->whereDoesntHave('purchasers');
+
         if ($this->viewType === 'new') {
             $this->newItems = $query->orderBy('created_at', 'desc')->get();
             $this->likedItems = collect();

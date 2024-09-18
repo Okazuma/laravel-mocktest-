@@ -13,9 +13,14 @@ use App\Http\Requests\AddressRequest;
 
 class PurchaseController extends Controller
 {
-    public function purchase($id)
+    public function purchase($id) // 購入ページの表示
     {
         $item = Item::find($id);
+
+        // 自分が出品したアイテムかどうか確認
+        if ($item->user_id == Auth::id()) {
+            return redirect()->back()->with('error', '自分が出品した商品を購入することはできません！');
+        }
         $user = Auth::user();
         $paymentMethods = PaymentMethod::all();
         $defaultPaymentMethod = $paymentMethods->first();
@@ -27,14 +32,14 @@ class PurchaseController extends Controller
     }
 
 
-    public function showAddress($itemId)
+    public function showAddress($itemId) // 住所登録のページ
     {
         $item = Item::findOrFail($itemId);
         return view('address', compact('item'));
     }
 
 
-    public function updateAddress(AddressRequest $request)
+    public function updateAddress(AddressRequest $request) // 住所変更の処理
     {
         $user = Auth::user();
         $purchase = Purchase::updateOrCreate(
@@ -53,7 +58,7 @@ class PurchaseController extends Controller
     }
 
 
-    public function processPurchase(Request $request)
+    public function processPurchase(Request $request) // 商品購入の処理
     {
         if ($request->payment_method_id == 1) {
         return app(StripeController::class)->createCheckoutSession($request);

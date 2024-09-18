@@ -29,7 +29,7 @@ class ItemsSeeder extends Seeder
             'item_image' => NULL,
             'price' => '4000',
             'description' => 'テストテストテストテストテストテストテストテストテストテスト',
-            'condition' => '良好',
+            'condition_id' => 1,
             ];
         }
 
@@ -40,7 +40,7 @@ class ItemsSeeder extends Seeder
             'item_image' => NULL,
             'price' => '5000',
             'description' => 'テストテストテストテストテストテストテストテストテストテスト',
-            'condition' => '良好',
+            'condition_id' => 2,
             ];
         }
 

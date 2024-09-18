@@ -21,7 +21,7 @@
                                     @if ($item->item_image)
                                         <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                                     @else
-                                        <img alt="">
+                                        <img src="">
                                     @endif
                                 </a>
                             @endforeach
@@ -37,7 +37,7 @@
                                     @if ($item->item_image)
                                         <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                                     @else
-                                        <img alt="">
+                                        <img src="">
                                     @endif
                                 </a>
                             @endforeach
@@ -53,7 +53,7 @@
                                     @if ($item->item_image)
                                         <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                                     @else
-                                        <img alt="">
+                                        <img src="">
                                     @endif
                                 </a>
                             @endforeach

@@ -4,6 +4,11 @@
     margin-bottom: 36px;
 }
 
+.alert{
+    text-align: center;
+    color: red;
+}
+
 
 .search--results{
     display: flex;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+
 use Livewire\Component;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,9 @@ class UserProducts extends Component
     {
         $user_id = Auth::id();
 
-        $this->sellingItems = Item::where('user_id', $user_id)->get();
+        $this->sellingItems = Item::where('user_id', $user_id)
+                                    ->orderBy('created_at', 'desc')
+                                    ->get();
 
         $this->boughtItems = Item::whereIn('id', function ($query) use ($user_id) {
             $query->select('item_id')

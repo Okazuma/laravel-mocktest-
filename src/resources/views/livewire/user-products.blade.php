@@ -11,13 +11,13 @@
             @if($sellingItems->isEmpty())
                 <p>まだ出品した商品はありません。</p>
             @else
-                <div class="items">
+                <div class="sell--items">
                     @foreach($sellingItems as $item)
-                        <a class="item__image" href="{{route('detail', $item->id)}}">
+                        <a class="sell--item__image" href="{{route('detail', $item->id)}}">
                             @if ($item->item_image)
                                 <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                             @else
-                                <img alt="">
+                                <img src="">
                             @endif
                         </a>
                     @endforeach
@@ -27,13 +27,13 @@
             @if($boughtItems->isEmpty())
                 <p>まだ購入した商品はありません。</p>
             @else
-                <div class="items">
+                <div class="sell--items">
                     @foreach($boughtItems as $item)
-                        <a class="item__image" href="{{route('detail', $item->id)}}">
+                        <a class="sell--item__image" href="{{route('detail', $item->id)}}">
                             @if ($item->item_image)
                                 <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
                             @else
-                                <img alt="">
+                                <img src="">
                             @endif
                         </a>
                     @endforeach

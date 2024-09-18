@@ -15,7 +15,7 @@ class Item extends Model
         'item_image',
         'price',
         'description',
-        'condition',
+        'condition_id',
         'category_id',
     ];
 
@@ -37,6 +37,11 @@ class Item extends Model
         return $this->belongsToMany(Category::class, 'category_item');
     }
 
+    public function condition()
+    {
+        return $this->belongsTo(Condition::class);
+    }
+
 
     public function comments()
     {
@@ -46,6 +51,6 @@ class Item extends Model
 
     public function purchasers()
     {
-        return $this->hasMany('Purchase::class');
+        return $this->hasMany(Purchase::class, 'item_id');
     }
 }

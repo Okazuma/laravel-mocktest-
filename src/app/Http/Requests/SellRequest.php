@@ -26,7 +26,7 @@ class SellRequest extends FormRequest
         return [
             'item_image' => ['file', 'mimes:jpeg,png,jpg', 'max:5120'],
             'category_id' => ['required','min:1'],
-            'condition' => ['required','string','max:50'],
+            'condition_id' => ['required'],
             'name' => ['required','string','max:50'],
             'description' => ['required','string','max:200'],
             'price' => ['required','integer','min:1'],
@@ -42,8 +42,6 @@ class SellRequest extends FormRequest
             'category_id.required' => 'カテゴリーを選択してください。',
             'category_id.min' => '少なくとも1つのカテゴリーを選択してください。',
             'condition.required' => '商品の状態を入力してください',
-            'condition.string' => '文字列で入力してください',
-            'condition.max' => '50文字以内で入力してください',
             'name.required' => '商品名を入力してください',
             'name.string' => '文字列で入力してください',
             'name.max' => '50文字以内で入力してください',

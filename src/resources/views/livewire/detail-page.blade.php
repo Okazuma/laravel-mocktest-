@@ -58,7 +58,7 @@
 
                 <div class="item--about">
                     <span class="detail__title">商品の状態:</span>
-                    <span class="detail__condition">{{$item->condition}}</span>
+                    <span class="detail__condition">{{ $item->condition->name }}</span>
                 </div>
             </section>
         </div>

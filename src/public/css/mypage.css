@@ -43,6 +43,7 @@
     background-color: #d3d3d3;
 }
 
+
 .edit__button {
     width: 50%;
     min-width: 200px;
@@ -118,6 +119,42 @@
     border: none;
     background-color: #d3d3d3;
 }
+
+
+
+
+
+
+.sell--items {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.sell--item__image {
+    width: 25%;
+    padding: 4%;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    border: none;
+    text-decoration: none;
+}
+
+.sell--item__image img {
+    margin: 0 auto;
+    width: auto;
+    height: 100%;
+    display: block;
+    border: none;
+    background-color: #d3d3d3;
+}
+
+
+
+
+
 
 
 

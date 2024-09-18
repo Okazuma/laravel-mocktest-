@@ -19,7 +19,7 @@
             @if ($user->profile_image)
                 <img src="{{ asset('storage/' . $user->profile_image) }}" alt="">
             @else
-                <img class="no-image">
+                <img class="">
             @endif
         </div>
         <p class="user-name">{{ $user->name }}</p>
