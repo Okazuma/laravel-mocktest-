@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 @endsection
 
-
-
 @section('content')
 
 @if (session('error'))

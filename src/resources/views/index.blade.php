@@ -19,7 +19,6 @@
         </div>
     @endcan
 
-
     @livewire('products')
 
 @endsection

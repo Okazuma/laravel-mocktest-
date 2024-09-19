@@ -41,7 +41,7 @@ class MarketController extends Controller
 
         if ($request->hasFile('item_image')) {
             $image = $request->file('item_image');
-            $imagePath = $image->store('images', 'public');
+            $imagePath = $image->store('images', config('filesystems.default'));
             $item->item_image = $imagePath;
         } else {
             $item->item_image = null;

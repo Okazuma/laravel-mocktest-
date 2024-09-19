@@ -43,10 +43,10 @@ class MypageController extends Controller
         $user->building = $request->building;
 
         if ($request->hasFile('profile_image')) {
-            if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
-                Storage::disk('public')->delete($user->profile_image);
-            }
-            $filePath = $request->file('profile_image')->store('profile', 'public');
+            if ($user->profile_image && Storage::disk(config('filesystems.default'))->exists($user->profile_image)) {
+            Storage::disk(config('filesystems.default'))->delete($user->profile_image);
+        }
+            $filePath = $request->file('profile_image')->store('profile', config('filesystems.default'));
             $user->profile_image = $filePath;
         }
         $user->save();

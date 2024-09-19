@@ -5,9 +5,13 @@
                 @foreach($items as $item)
                     <a class="item__image" href="{{route('detail', $item->id)}}">
                         @if ($item->item_image)
-                            <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                            @if (config('filesystems.default') === 's3')
+                                <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                            @else
+                                <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                            @endif
                         @else
-                            <img alt="">
+                            <img src="" alt="No image">
                         @endif
                     </a>
                 @endforeach
@@ -17,7 +21,11 @@
     <div class="profile">
         <div class="profile__image">
             @if ($user->profile_image)
-                <img src="{{ asset('storage/' . $user->profile_image) }}" alt="">
+                @if (config('filesystems.default') === 's3')
+                    <img src="{{ Storage::disk('s3')->url($user->profile_image) }}" alt="">
+                @else
+                    <img src="{{ asset('storage/' . $user->profile_image) }}" alt="">
+                @endif
             @else
                 <img class="">
             @endif

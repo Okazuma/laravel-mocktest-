@@ -17,11 +17,15 @@
                     @else
                         <div class="items">
                             @foreach($newItems as $item)
-                                <a class="item__image" href="{{route('detail', $item->id)}}">
+                                <a class="item__image" href="{{ route('detail', $item->id) }}">
                                     @if ($item->item_image)
-                                        <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                                        @if (config('filesystems.default') === 's3')
+                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                                        @else
+                                            <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                                        @endif
                                     @else
-                                        <img src="">
+                                        <img src="" alt="No image">
                                     @endif
                                 </a>
                             @endforeach
@@ -35,9 +39,13 @@
                             @foreach($newItems as $item)
                                 <a class="item__image" href="{{route('detail', $item->id)}}">
                                     @if ($item->item_image)
-                                        <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                                        @if (config('filesystems.default') === 's3')
+                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                                        @else
+                                            <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                                        @endif
                                     @else
-                                        <img src="">
+                                        <img src="" alt="No image">
                                     @endif
                                 </a>
                             @endforeach
