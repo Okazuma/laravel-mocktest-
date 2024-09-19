@@ -21,4 +21,3 @@ docker/mysql/data/
 *.log
 *.cache
 *.tmp
-/src/vendor/
