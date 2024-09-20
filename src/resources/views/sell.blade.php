@@ -49,6 +49,7 @@
                 <div class="item-group">
                     <label class="detail-title" for="condition">商品の状態</label>
                     <select class="detail-condition" name="condition_id" id="condition">
+                        <option value="" disabled selected>選択してください</option>
                         @foreach ($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                         @endforeach
