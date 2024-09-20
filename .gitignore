@@ -21,3 +21,4 @@ docker/mysql/data/
 *.log
 *.cache
 *.tmp
+/src/storage/app/images/
