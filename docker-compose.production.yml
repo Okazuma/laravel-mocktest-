@@ -9,8 +9,7 @@ services:
             - ./src:/var/www/
         depends_on:
             - php
-        env_file:
-            - ./src/.env.production
+
 
     php:
         build: ./docker/php
