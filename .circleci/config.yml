@@ -51,7 +51,6 @@ jobs:
           name: List Docker Containers
           command: docker ps
 
-      
 
       # .composerのインストール
       - run:
@@ -59,20 +58,25 @@ jobs:
           command: docker compose exec -T php composer install
 
 
+      # APP_KEYの生成
+      - run:
+          name: Generate application key
+          command: |
+            APP_KEY=$(docker compose exec -T php php artisan key:generate --show)
+            echo "APP_KEY=${APP_KEY}" >> .env
+
+
       # .envをコンテナ内にコピー
       - run:
           name: Copy .env file from host to container
           command: docker compose cp .env php:/var/www/.env
+
 
       # /var/www/の.envの確認
       - run:
           name: Check .env
           command: docker compose exec -T php ls -a /var/www/
 
-      # APP_KEYの生成
-      - run:
-          name: Generate application key
-          command: docker compose exec -T php php artisan key:generate
 
       # マイグレーションの実行
       - run:
@@ -89,10 +93,12 @@ jobs:
           name: Check mysql DataBase
           command: docker logs laravel-mocktest3-mysql-1
 
+      # テストの実行
       - run:
           name: Run PHPUnit tests
           command: docker compose -f docker-compose.yml exec -T php vendor/bin/phpunit --configuration phpunit.xml --stop-on-failure
 
+      # Docker composeの停止
       - run:
           name: Stop Docker Compose
           command: docker compose -f docker-compose.yml down
