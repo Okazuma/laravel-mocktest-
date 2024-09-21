@@ -58,13 +58,14 @@ class CommentControllerTest extends TestCase
         // ゲストユーザーがコメント追加できないことを確認するテストーーーーーーーーーー
     public function test_guest_cannot_add_comment()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $item = Item::create([
             'user_id' => User::factory()->create()->id,
             'name' => 'Test Item',
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
         $response = $this->post(route('store.comment', ['id' => $item->id]), [
             'content' => 'This is a test comment.',
@@ -81,6 +82,7 @@ class CommentControllerTest extends TestCase
     // ログインユーザーが自分のコメントを削除できることを確認するテストーーーーーーーーーー
     public function test_user_can_delete_own_comment()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
         $item = Item::create([
             'user_id' => $user->id,
@@ -88,7 +90,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
         $comment = Comment::create([
             'item_id' => $item->id,
@@ -111,6 +113,7 @@ class CommentControllerTest extends TestCase
     // ログインユーザーが他人のコメントを削除できないことを確認するテストーーーーーーーーーー
     public function test_user_cannot_delete_other_users_comment()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
         $otherUser = User::factory()->create();
         $item = Item::create([
@@ -119,7 +122,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
         $comment = Comment::create([
             'item_id' => $item->id,
