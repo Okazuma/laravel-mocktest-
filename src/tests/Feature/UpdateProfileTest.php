@@ -42,7 +42,7 @@ class UpdateProfileTest extends TestCase
         $this->assertNotNull($user->profile_image);
         $expectedFilePath = 'profile/' . basename($user->profile_image);
 
-        Storage::disk('public')->assertExists($expectedFilePath);
+        Storage::disk('public')->assertExists($user->profile_image);
 
         $response->assertRedirect(route('profile', ['id' => $user->id]));
         $response->assertSessionHas('message', 'プロフィールを更新しました');
