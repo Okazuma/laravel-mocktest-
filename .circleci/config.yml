@@ -12,7 +12,6 @@ jobs:
     steps:
       - checkout
 
-
       # .docker composeのインストール
       - run:
           name: Install Docker Compose
