@@ -19,7 +19,14 @@ class UpdateAddressTest extends TestCase
      *
      * @return void
      */
-    // 配送先の変更ができるか確認するテストーーーーーーーーーー
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(\ConditionSeeder::class);
+    }
+
+    // 配送先の変更ができるか確認するテスト
     public function test_update_shipping_address()
     {
         $user = User::factory()->create();
@@ -29,7 +36,7 @@ class UpdateAddressTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
 
         $this->actingAs($user);

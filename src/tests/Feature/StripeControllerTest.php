@@ -8,6 +8,7 @@ use Tests\TestCase;
 use Illuminate\Support\Facades\Http;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Condition;
 
 class StripeControllerTest extends TestCase
 {
@@ -17,8 +18,13 @@ class StripeControllerTest extends TestCase
      *
      * @return void
      */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(\ConditionSeeder::class);
+    }
 
-    //  クレジットカード選択でstripeにリダイレクトされることを確認するテストーーーーーーーーーー
+    //  クレジットカード選択でstripeにリダイレクトされることを確認するテスト
     public function test_create_checkout_session()
     {
         Http::fake([
@@ -35,7 +41,7 @@ class StripeControllerTest extends TestCase
             'item_image' => '',
             'price' => 1000,
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
         $this->actingAs($user);
         $response = $this->post('/purchase',[
