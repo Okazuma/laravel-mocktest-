@@ -31,7 +31,6 @@ jobs:
             echo "DB_USERNAME=${DB_USERNAME}" >> .env
             echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
 
-
       # .envの確認
       - run:
           name: Check .env file on host
@@ -42,16 +41,15 @@ jobs:
           name: Start Docker Compose
           command: docker compose -f docker-compose.yml up -d --build
 
-
       # .コンテナの確認
       - run:
           name: List Docker Containers
           command: docker ps
 
-
-      - run:
-          name: List MySQL Tables
-          command: docker exec -it laravel-mocktest3-mysql-1 mysql -u laravel_user -p'laravel_pass' -e "SHOW TABLES;" laravel_db
+      # # データベース内のテーブルの確認
+      # - run:
+      #     name: List MySQL Tables
+      #     command: docker exec -it laravel-mocktest3-mysql-1 mysql -u laravel_user -p'laravel_pass' -e "SHOW TABLES;" laravel_db
 
       # Mysqlのログの確認
       - run:
