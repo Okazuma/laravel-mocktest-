@@ -8,6 +8,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Comment;
+use App\Models\Condition;
 
 
 class CommentControllerTest extends TestCase
