@@ -41,6 +41,11 @@ jobs:
           name: Start Docker Compose
           command: docker compose -f docker-compose.yml up -d --build
 
+      # MySQLコンテナの起動待ち（10秒待機）
+      - run:
+          name: Wait for MySQL to start
+          command: sleep 10
+
       # .コンテナの確認
       - run:
           name: List Docker Containers
