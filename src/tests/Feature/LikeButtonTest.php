@@ -18,16 +18,23 @@ class LikeButtonTest extends TestCase
      *
      * @return void
      */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(\ConditionSeeder::class);
+    }
+
     // ゲストユーザーがいいねを押した時のテスト
     public function test_guest_is_redirected_to_login()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $item = Item::create([
             'user_id' =>  User::factory()->create()->id,
             'name' => 'Test Item',
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
         Livewire::test('like-button', ['itemId' => $item->id])
             ->call('toggleLike')
@@ -39,15 +46,15 @@ class LikeButtonTest extends TestCase
     // ログインユーザーがいいねを押した時のテスト
     public function test_user_can_like_an_item()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
-
         $item = Item::create([
             'user_id' => $user->id,
             'name' => 'Test Item',
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
         $this->actingAs($user);
 
@@ -65,6 +72,7 @@ class LikeButtonTest extends TestCase
     // ゲストユーザーがいいねを取り消すテスト
     public function test_user_can_unlike_an_item()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::create([
             'name' => 'Test User',
             'email' => 'unlike-test@example.com',
@@ -80,7 +88,7 @@ class LikeButtonTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
 
         Like::create([
