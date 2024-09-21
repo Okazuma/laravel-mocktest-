@@ -35,7 +35,7 @@ class StripeControllerTest extends TestCase
             'item_image' => '',
             'price' => 1000,
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 1,
         ]);
         $this->actingAs($user);
         $response = $this->post('/purchase',[

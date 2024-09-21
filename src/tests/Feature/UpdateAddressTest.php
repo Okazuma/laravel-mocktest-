@@ -8,6 +8,7 @@ use Tests\TestCase;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Purchase;
+use App\Models\Condition;
 
 
 class UpdateAddressTest extends TestCase
@@ -28,7 +29,7 @@ class UpdateAddressTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 1,
         ]);
 
         $this->actingAs($user);

@@ -37,9 +37,13 @@ class ChangePaymentMethodTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 1,
         ]);
-        $paymentMethods = PaymentMethod::all();
+        $paymentMethods = PaymentMethod::create([
+            ['name' => 'クレジットカード'],
+            ['name' => 'コンビニ払い'],
+            ['name' => '銀行振込'],
+        ]);
         $creditCardPaymentMethod = $paymentMethods->firstWhere('name', 'クレジットカード');
 
         $this->actingAs($user);

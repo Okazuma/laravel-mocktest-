@@ -28,7 +28,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 2,
         ]);
 
         $this->actingAs($user);
@@ -55,7 +55,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 1,
         ]);
         $response = $this->post(route('store.comment', ['id' => $item->id]), [
             'content' => 'This is a test comment.',
@@ -79,7 +79,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 1,
         ]);
         $comment = Comment::create([
             'item_id' => $item->id,
@@ -110,7 +110,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition' => '良好',
+            'condition_id' => 1,
         ]);
         $comment = Comment::create([
             'item_id' => $item->id,
