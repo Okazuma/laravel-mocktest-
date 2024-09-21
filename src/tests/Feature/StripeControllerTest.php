@@ -23,6 +23,7 @@ class StripeControllerTest extends TestCase
     {
         parent::setUp();
         $this->seed(\ConditionSeeder::class);
+        Stripe::setApiKey(env('STRIPE_TEST_SECRET'));
     }
 
     //  クレジットカード選択でstripeにリダイレクトされることを確認するテスト
