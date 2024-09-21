@@ -19,6 +19,7 @@ jobs:
           command: |
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
+
       # .docker composeの起動
       - run:
           name: Start Docker Compose
@@ -71,7 +72,7 @@ jobs:
       # マイグレーションの実行
       - run:
           name: Run migrations
-          command: docker compose exec -T php php artisan migrate
+          command: docker compose exec -T php php artisan migrate --force
 
       - run:
           name: Run PHPUnit tests
