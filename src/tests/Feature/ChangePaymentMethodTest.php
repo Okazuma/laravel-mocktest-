@@ -41,7 +41,7 @@ class ChangePaymentMethodTest extends TestCase
             'condition_id' => 1,
         ]);
 
-        $paymentMethods = PaymentMethod::create([['name' => 'クレジットカード']]);
+        $paymentMethods = PaymentMethod::create(['name' => 'クレジットカード']);
         $paymentMethods = PaymentMethod::create(['name' => 'コンビニ払い']);
         $paymentMethods = PaymentMethod::create(['name' => '銀行振込']);
 
