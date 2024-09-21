@@ -9,6 +9,7 @@ use Livewire\Livewire;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Like;
+use App\Models\Condition;
 
 class LikeButtonTest extends TestCase
 {

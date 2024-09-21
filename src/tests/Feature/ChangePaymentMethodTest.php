@@ -10,6 +10,7 @@ use App\Models\Item;
 use App\Models\PaymentMethod;
 use App\Models\Purchase;
 use App\Models\User;
+use App\Models\Condition;
 
 class ChangePaymentMethodTest extends TestCase
 {
@@ -31,6 +32,7 @@ class ChangePaymentMethodTest extends TestCase
     // 決済方法を変更できているかの確認テストーーーーーーーーーー
     public function test_selects_payment_method()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
         $item = Item::create([
             'user_id' => $user->id,
@@ -38,7 +40,7 @@ class ChangePaymentMethodTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
 
         $paymentMethods = PaymentMethod::create(['name' => 'クレジットカード']);
