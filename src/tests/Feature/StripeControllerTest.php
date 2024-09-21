@@ -23,13 +23,12 @@ class StripeControllerTest extends TestCase
     {
         parent::setUp();
         $this->seed(\ConditionSeeder::class);
-        Stripe::setApiKey(env('STRIPE_TEST_SECRET'));
     }
 
     //  クレジットカード選択でstripeにリダイレクトされることを確認するテスト
     public function test_create_checkout_session()
     {
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
         Http::fake([
             'api.stripe.com/v1/checkout/sessions' => Http::response([
