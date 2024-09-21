@@ -29,7 +29,7 @@ class StripeControllerTest extends TestCase
     //  クレジットカード選択でstripeにリダイレクトされることを確認するテスト
     public function test_create_checkout_session()
     {
-        Stripe::setApiKey(config('services.stripe.key'));
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
         Http::fake([
             'api.stripe.com/v1/checkout/sessions' => Http::response([
