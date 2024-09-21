@@ -24,6 +24,11 @@ jobs:
           name: Start Docker Compose
           command: docker compose -f docker-compose.yml up -d --build
 
+      - run:
+      # name: Mysqlのログの確認
+          command: docker logs laravel-mocktest3-mysql-1
+
+
 
       # .コンテナの確認
       - run:
