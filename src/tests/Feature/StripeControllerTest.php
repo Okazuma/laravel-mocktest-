@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Condition;
+use Stripe\Stripe;
 
 class StripeControllerTest extends TestCase
 {
@@ -27,6 +28,7 @@ class StripeControllerTest extends TestCase
     //  クレジットカード選択でstripeにリダイレクトされることを確認するテスト
     public function test_create_checkout_session()
     {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
         Http::fake([
             'api.stripe.com/v1/checkout/sessions' => Http::response([
