@@ -24,6 +24,7 @@ class ChangePaymentMethodTest extends TestCase
     {
         parent::setUp();
         $this->seed(\PaymentMethodSeeder::class);
+        $this->seed(\ConditionSeeder::class);
     }
 
 
