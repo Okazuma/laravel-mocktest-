@@ -20,16 +20,27 @@ jobs:
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
 
+      # .envのファイル作成
+      - run:
+          name: Create .env file from environment variables
+          command: |
+            echo "DB_CONNECTION=${DB_CONNECTION}" > .env
+            echo "DB_HOST=${DB_HOST}" >> .env
+            echo "DB_PORT=${DB_PORT}" >> .env
+            echo "DB_DATABASE=${DB_DATABASE}" >> .env
+            echo "DB_USERNAME=${DB_USERNAME}" >> .env
+            echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
+
+
+      # .envの確認
+      - run:
+          name: Check .env file on host
+          command: ls -a
+
       # .docker composeの起動
       - run:
           name: Start Docker Compose
           command: docker compose -f docker-compose.yml up -d --build
-
-      # Mysqlのログの確認
-      - run:
-          name: Check mysql DataBase
-          command: docker logs laravel-mocktest3-mysql-1
-
 
 
       # .コンテナの確認
@@ -42,29 +53,16 @@ jobs:
           name: List MySQL Tables
           command: docker exec -it laravel-mocktest3-mysql-1 mysql -u laravel_user -p'laravel_pass' -e "SHOW TABLES;" laravel_db
 
-
+      # Mysqlのログの確認
+      - run:
+          name: Check mysql DataBase
+          command: docker logs laravel-mocktest3-mysql-1
 
       # .composerのインストール
       - run:
           name: Laravel dependency installation
           command: docker compose exec -T php composer install
 
-
-      # .envファイルの作成(project settingで環境変数設定)
-      - run:
-          name: Create .env file from environment variables
-          command: |
-            echo "DB_CONNECTION=${DB_CONNECTION}" > .env
-            echo "DB_HOST=${DB_HOST}" >> .env
-            echo "DB_PORT=${DB_PORT}" >> .env
-            echo "DB_DATABASE=${DB_DATABASE}" >> .env
-            echo "DB_USERNAME=${DB_USERNAME}" >> .env
-            echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
-
-      # .envの確認
-      - run:
-          name: Check .env file on host
-          command: ls -a
 
       # .envをコンテナ内にコピー
       - run:
