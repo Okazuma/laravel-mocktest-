@@ -33,8 +33,8 @@ class StripeControllerTest extends TestCase
                 'url' => 'https://fake-url.com',
             ], 200),
         ]);
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
-
         $item = Item::create([
             'user_id' => $user->id,
             'name' => 'Test Item',
