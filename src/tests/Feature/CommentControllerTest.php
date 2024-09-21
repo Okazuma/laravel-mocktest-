@@ -18,6 +18,13 @@ class CommentControllerTest extends TestCase
      *
      * @return void
      */
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(\ConditionSeeder::class);
+    }
+
     // ログインユーザーがコメント追加できることを確認するテストーーーーーーーーーー
     public function test_user_can_add_comment()
     {
@@ -28,7 +35,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 2,
+            'condition_id' => 1,
         ]);
 
         $this->actingAs($user);
