@@ -30,8 +30,8 @@ jobs:
             echo "DB_DATABASE=${DB_DATABASE}" >> .env
             echo "DB_USERNAME=${DB_USERNAME}" >> .env
             echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
-            echo "STRIPE_KEY=${STRIPE_KEY}" >> .env
-            echo "STRIPE_SECRET=${STRIPE_SECRET}" >> .env
+            echo "STRIPE_KEY=${STRIPE_PUBLIC_KEY}" >> .env
+            echo "STRIPE_SECRET=${STRIPE_SECRET_KEY}" >> .env
 
       # .envの確認
       - run:
