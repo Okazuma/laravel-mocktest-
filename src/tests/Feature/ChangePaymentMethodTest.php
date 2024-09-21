@@ -40,7 +40,7 @@ class ChangePaymentMethodTest extends TestCase
             'description' => 'Test description',
             'condition_id' => 1,
         ]);
-        $paymentMethods = PaymentMethod::create([
+        $paymentMethods = PaymentMethod::insert([
             ['name' => 'クレジットカード'],
             ['name' => 'コンビニ払い'],
             ['name' => '銀行振込'],
