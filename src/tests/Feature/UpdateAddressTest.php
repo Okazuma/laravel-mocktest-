@@ -29,6 +29,7 @@ class UpdateAddressTest extends TestCase
     // 配送先の変更ができるか確認するテスト
     public function test_update_shipping_address()
     {
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
         $item = Item::create([
             'user_id' => $user->id,
