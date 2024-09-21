@@ -40,11 +40,11 @@ class ChangePaymentMethodTest extends TestCase
             'description' => 'Test description',
             'condition_id' => 1,
         ]);
-        $paymentMethods = PaymentMethod::insert([
-            ['name' => 'クレジットカード'],
-            ['name' => 'コンビニ払い'],
-            ['name' => '銀行振込'],
-        ]);
+
+        $paymentMethods = PaymentMethod::create([['name' => 'クレジットカード']]);
+        $paymentMethods = PaymentMethod::create(['name' => 'コンビニ払い']);
+        $paymentMethods = PaymentMethod::create(['name' => '銀行振込']);
+
         $creditCardPaymentMethod = $paymentMethods->firstWhere('name', 'クレジットカード');
 
         $this->actingAs($user);
