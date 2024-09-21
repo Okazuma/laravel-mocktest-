@@ -1,0 +1,88 @@
+version: 2.1
+
+executors:
+  machine-executor:
+    machine:
+      image: ubuntu-2404:2024.05.1
+    working_directory: ~/laravel-mocktest3
+
+jobs:
+  build:
+    executor: machine-executor
+    steps:
+      - checkout
+
+
+      # .docker composeのインストール
+      - run:
+          name: Install Docker Compose
+          command: |
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+      # .docker composeの起動
+      - run:
+          name: Start Docker Compose
+          command: docker compose -f docker-compose.yml up -d --build
+
+
+      # .コンテナの確認
+      - run:
+          name: List Docker Containers
+          command: docker ps
+
+
+      # .composerのインストール
+      - run:
+          name: Laravel dependency installation
+          command: docker compose exec -T php composer install
+
+
+      # .envファイルの作成(project settingで環境変数設定)
+      - run:
+          name: Create .env file from environment variables
+          command: |
+            echo "DB_CONNECTION=${DB_CONNECTION}" > .env
+            echo "DB_HOST=${DB_HOST}" >> .env
+            echo "DB_PORT=${DB_PORT}" >> .env
+            echo "DB_DATABASE=${DB_DATABASE}" >> .env
+            echo "DB_USERNAME=${DB_USERNAME}" >> .env
+            echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
+
+      # .envの確認
+      - run:
+          name: Check .env file on host
+          command: ls -a
+
+      # docker-composeの立ち上げ
+      - run:
+          name: Copy .env file from host to container
+          command: docker compose cp .env php:/var/www/.env
+
+      # /var/www/の.envの確認
+      - run:
+          name: Check .env
+          command: docker compose exec -T php ls -a /var/www/
+
+      # APP_KEYの生成
+      - run:
+          name: Generate application key
+          command: docker compose exec -T php php artisan key:generate
+
+      # マイグレーションの実行
+      - run:
+          name: Run migrations
+          command: docker compose exec -T php php artisan migrate
+
+      - run:
+          name: Run PHPUnit tests
+          command: docker compose -f docker-compose.yml exec -T php vendor/bin/phpunit --configuration phpunit.xml --stop-on-failure
+
+      - run:
+          name: Stop Docker Compose
+          command: docker compose -f docker-compose.yml down
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
