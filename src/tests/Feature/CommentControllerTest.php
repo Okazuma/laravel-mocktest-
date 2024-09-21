@@ -27,6 +27,8 @@ class CommentControllerTest extends TestCase
     // ログインユーザーがコメント追加できることを確認するテストーーーーーーーーーー
     public function test_user_can_add_comment()
     {
+
+        $condition = Condition::create(['id' => 1, 'name' => '新品']);
         $user = User::factory()->create();
         $item = Item::create([
             'user_id' => $user->id,
@@ -34,7 +36,7 @@ class CommentControllerTest extends TestCase
             'price' => 1000,
             'item_image' => 'path/to/image.jpg',
             'description' => 'Test description',
-            'condition_id' => 1,
+            'condition_id' => $condition->id,
         ]);
 
         $this->actingAs($user);
