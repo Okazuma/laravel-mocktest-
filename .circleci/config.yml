@@ -33,6 +33,7 @@ jobs:
             echo "STRIPE_PUBLIC_KEY=${STRIPE_PUBLIC_KEY}" >> .env
             echo "STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}" >> .env
 
+
       # .envの確認
       - run:
           name: Check .env file on host
@@ -95,15 +96,6 @@ jobs:
           name: Check mysql DataBase
           command: docker logs laravel-mocktest3-mysql-1
 
-  test:
-    executor: machine-executor
-    steps:
-      - checkout
-
-      # .docker composeの起動
-      - run:
-          name: Start Docker Compose
-          command: docker compose -f docker-compose.yml up -d --build
 
       # テストの実行
       - run:
@@ -119,7 +111,4 @@ workflows:
   version: 2
   test:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - build_and_test
