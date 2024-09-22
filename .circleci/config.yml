@@ -99,6 +99,12 @@ jobs:
     executor: machine-executor
     steps:
       - checkout
+
+      # .docker composeの起動
+      - run:
+          name: Start Docker Compose
+          command: docker compose -f docker-compose.yml up -d --build
+
       # テストの実行
       - run:
           name: Run PHPUnit tests
