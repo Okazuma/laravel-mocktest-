@@ -95,6 +95,10 @@ jobs:
           name: Check mysql DataBase
           command: docker logs laravel-mocktest3-mysql-1
 
+  test:
+    executor: machine-executor
+    steps:
+      - checkout
       # テストの実行
       - run:
           name: Run PHPUnit tests
