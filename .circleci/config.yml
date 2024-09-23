@@ -127,7 +127,7 @@ jobs:
       - run:
           name: SSH into EC2 and pull code
           command: |
-            ssh ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull"
+            ssh -i /Users/kazuoshima/Downloads/laravel-market.pem  ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull"
 
 
 
