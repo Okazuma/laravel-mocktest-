@@ -127,7 +127,7 @@ jobs:
       - run:
           name: SSH into EC2 and pull code
           command: |
-          - run: ssh ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull"
+            ssh ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull"
 
 
 
