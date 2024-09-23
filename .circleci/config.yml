@@ -112,12 +112,7 @@ jobs:
     steps:
       - checkout
 
-      # AWS CLIのインストール
-      - run:
-          name: Install AWS CLI
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y awscli
+      
 
 
       - run:
