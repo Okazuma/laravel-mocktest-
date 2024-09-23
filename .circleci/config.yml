@@ -119,17 +119,10 @@ jobs:
       - checkout
 
       # EC2インスタンスに接続してgit pull
-      # - run:
-      #     name: SSH into EC2 and pull code
-      #     command: |
-      #       ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
-
       - run:
           name: SSH into EC2 and pull code
           command: |
-            ssh -i /Users/kazuoshima/Downloads/laravel-market.pem  ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull"
-
-
+            ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
 
 
       # docker composeの起動
@@ -137,7 +130,6 @@ jobs:
           name: Restart Docker containers
           command: |
             ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && docker-compose up -d"
-
 
 
 
