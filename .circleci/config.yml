@@ -112,13 +112,13 @@ jobs:
     steps:
       - checkout
 
-      
+
 
 
       - run:
           name: Deploy to EC2
           command: |
-            EC2_INSTANCE_IP="13.115.4.137"
+            EC2_INSTANCE_IP=13.115.4.137
             SSH_KEY="${SSH_KEY}"
             SSH_OPTIONS="-o StrictHostKeyChecking=no -i ${SSH_KEY}"
 
