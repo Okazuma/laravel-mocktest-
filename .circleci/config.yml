@@ -127,11 +127,11 @@ jobs:
             SSH_KEY="${SSH_KEY}"
             SSH_OPTIONS="-o StrictHostKeyChecking=no -i ${SSH_KEY}"
 
-      ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} << 'EOF'
-          cd /home/ec2-user/laravel-mocktest3 || exit 1
-          git pull origin main || exit 1
-          docker-compose up -d || exit 1
-      EOF
+            ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} << 'EOF'
+                cd /home/ec2-user/laravel-mocktest3 || exit 1
+                git pull origin main || exit 1
+                docker-compose up -d || exit 1
+            EOF
 
 
 
