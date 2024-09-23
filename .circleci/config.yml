@@ -109,20 +109,19 @@ jobs:
 
 
 
-  # deploy:
-  #   executor: machine-executor
-  #   environment:
-  #     EC2_INSTANCE_IP: 13.115.4.137
-  #     SSH_KEY: ${SSH_KEY}
-  #     SSH_OPTIONS: "-o StrictHostKeyChecking=no -i ${SSH_KEY}"
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: SSH into EC2 and pull code
-  #         command: |
-  #           echo "${SSH_KEY}" > /tmp/id_rsa
-  #           chmod 600 /tmp/id_rsa
-  #           ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
+  deploy:
+    executor: machine-executor
+    environment:
+      EC2_INSTANCE_IP: 13.115.4.137
+      SSH_KEY: ${SSH_KEY}
+    steps:
+      - checkout
+      - run:
+          name: SSH into EC2 and pull code
+          command: |
+            echo "${SSH_KEY}" > /tmp/id_rsa
+          chmod 600 /tmp/id_rsa
+          ssh -o StrictHostKeyChecking=no -i /tmp/id_rsa ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
 
       # # EC2インスタンスに接続してgit pull
       # - run:
@@ -159,16 +158,16 @@ jobs:
   #         name: SSH to EC2 and Deploy
   #         command: |
   #           ssh ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
-  deploy:
-    executor: machine-executor
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:LRrBntYPF//ochEoulIHf8XMwy/gzvZyBzoPtwEAIgw"  # SSHのフィンガープリントを設定
-      - run:
-          name: Deploy to EC2
-          command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull origin main && docker compose -f docker-compose.yml up -d --build"
+  # deploy:
+  #   executor: machine-executor
+  #   steps:
+  #     - add_ssh_keys:
+  #         fingerprints:
+  #           - "SHA256:LRrBntYPF//ochEoulIHf8XMwy/gzvZyBzoPtwEAIgw"  # SSHのフィンガープリントを設定
+  #     - run:
+  #         name: Deploy to EC2
+  #         command: |
+  #           ssh -o StrictHostKeyChecking=no ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull origin main && docker compose -f docker-compose.yml up -d --build"
 
 
 
