@@ -152,7 +152,6 @@ jobs:
           command: |
             ssh -o "StrictHostKeyChecking=no" ec2-user@13.115.4.137
 
-
       # docker composeの起動
       - run:
           name: Restart Docker containers
