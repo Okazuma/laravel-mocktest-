@@ -145,13 +145,14 @@ jobs:
 
 
 
-jobs:
+
   deploy:
     machine:
     steps:
       - add_ssh_keys:
           fingerprints:
             - "SHA256:LRrBntYPF//ochEoulIHf8XMwy/gzvZyBzoPtwEAIgw"
+      - checkout
 
       - run:
           name: SSH to EC2 and Deploy
