@@ -109,7 +109,6 @@ jobs:
 
 
 
-
   deploy:
     executor: machine-executor
     environment:
