@@ -116,6 +116,7 @@ jobs:
     steps:
       - checkout
 
+      # EC2インスタンスに接続してgit pull
       - run:
           name: SSH into EC2 and pull code
           command: |
