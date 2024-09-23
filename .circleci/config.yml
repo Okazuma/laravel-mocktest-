@@ -165,7 +165,7 @@ jobs:
       - run:
           name: SSH to EC2 and Deploy
           command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
+            ssh ec2-user@13.115.4.137 "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
 
       # docker composeの起動
       - run:
