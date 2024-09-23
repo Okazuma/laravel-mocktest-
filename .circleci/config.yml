@@ -148,6 +148,7 @@ jobs:
 
   deploy:
     machine:
+      image: ubuntu-2404:2024.05.1
     steps:
       - add_ssh_keys:
           fingerprints:
