@@ -109,18 +109,13 @@ jobs:
 
   deploy:
     executor: machine-executor
+    environment:
+      EC2_INSTANCE_IP="13.115.4.137"
+      SSH_KEY="${SSH_KEY}"
+      SSH_OPTIONS="-o StrictHostKeyChecking=no -i ${SSH_KEY}"
+
     steps:
       - checkout
-
-
-
-
-      - run:
-          name: Deploy to EC2
-          command: |
-            export EC2_INSTANCE_IP=13.115.4.137
-            export SSH_KEY="${SSH_KEY}"
-            export SSH_OPTIONS="-o StrictHostKeyChecking=no -i ${SSH_KEY}"
 
       - run:
           name: SSH into EC2 and pull code
