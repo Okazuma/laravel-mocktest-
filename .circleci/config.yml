@@ -113,16 +113,24 @@ jobs:
     executor: machine-executor
     environment:
       EC2_INSTANCE_IP=13.115.4.137
-      SSH_KEY="${SSH_KEY}""
+      SSH_KEY="${SSH_KEY}"
       SSH_OPTIONS="-o StrictHostKeyChecking=no -i ${SSH_KEY}"
     steps:
       - checkout
 
       # EC2インスタンスに接続してgit pull
+      # - run:
+      #     name: SSH into EC2 and pull code
+      #     command: |
+      #       ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
+
       - run:
           name: SSH into EC2 and pull code
           command: |
-            ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
+          - run: ssh ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull"
+
+
+
 
       # docker composeの起動
       - run:
