@@ -155,6 +155,13 @@ jobs:
             - "SHA256:LRrBntYPF//ochEoulIHf8XMwy/gzvZyBzoPtwEAIgw"
       - checkout
 
+
+            - run:
+          name: Test SSH Connection
+          command: |
+            ssh -o StrictHostKeyChecking=no ec2-user@13.115.4.137 "echo 'SSH connection successful'"
+
+
       - run:
           name: SSH to EC2 and Deploy
           command: |
