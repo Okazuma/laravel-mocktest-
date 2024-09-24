@@ -27,7 +27,7 @@
                     <img src="{{ asset('storage/profile' . $user->profile_image) }}" alt="No image">
                 @endif
             @else
-                <img src="">
+                <img alt="">
             @endif
         </div>
         <p class="user-name">{{ $user->name }}</p>
