@@ -123,34 +123,11 @@ jobs:
             chmod 600 /tmp/id_rsa
             ssh -o StrictHostKeyChecking=no -i /tmp/id_rsa ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
 
-      # # EC2インスタンスに接続してgit pull
-      # - run:
-      #     name: SSH into EC2 and pull code
-      #     command: |
-      #       ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
-
-        # SSHキーを一時ファイルとして作成
-      # - run:
-      #     name: Create SSH Key file
-      #     command: |
-      #       echo "$SSH_KEY" > ~/.ssh/id_rsa
-      #       chmod 600 ~/.ssh/id_rsa
-
-      # # EC2インスタンスに接続してgit pull
-      # - run:
-      #     name: SSH into EC2 and pull code
-      #     command: |
-      #       ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
-
-
-
       # docker composeの起動
       - run:
           name: Restart Docker containers
           command: |
             ssh ${SSH_OPTIONS} ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && docker-compose up -d"
-
-
 
 
 workflows:
