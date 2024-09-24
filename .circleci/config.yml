@@ -120,8 +120,8 @@ jobs:
           name: SSH into EC2 and pull code
           command: |
             echo "${SSH_KEY}" > /tmp/id_rsa
-          chmod 600 /tmp/id_rsa
-          ssh -o StrictHostKeyChecking=no -i /tmp/id_rsa ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
+            chmod 600 /tmp/id_rsa
+            ssh -o StrictHostKeyChecking=no -i /tmp/id_rsa ec2-user@${EC2_INSTANCE_IP} "cd /home/ec2-user/laravel-mocktest3 && git pull origin main"
 
       # # EC2インスタンスに接続してgit pull
       # - run:
