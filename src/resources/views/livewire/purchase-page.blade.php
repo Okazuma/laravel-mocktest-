@@ -23,9 +23,13 @@
                 <div class="content--item">
                     <div class="content--item__image">
                         @if ($item->item_image)
-                            <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                            @if (config('filesystems.default') === 's3')
+                                <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                            @else
+                                <img src="{{ asset('storage/' . $item->item_image) }}" alt="No image">
+                            @endif
                         @else
-                            <img alt="">
+                            <img src="" alt="No image">
                         @endif
                     </div>
                     <div class="content--item--detail">

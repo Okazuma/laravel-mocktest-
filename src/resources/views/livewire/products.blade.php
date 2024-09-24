@@ -40,7 +40,7 @@
                                 <a class="item__image" href="{{route('detail', $item->id)}}">
                                     @if ($item->item_image)
                                         @if (config('filesystems.default') === 's3')
-                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="No image">
                                         @else
                                             <img src="{{ asset('storage/' . $item->item_image) }}" alt="No image">
                                         @endif
@@ -60,7 +60,7 @@
                                 <a class="item__image" href="{{route('detail', $item->id)}}">
                                     @if ($item->item_image)
                                         @if (config('filesystems.default') === 's3')
-                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="No image">
                                         @else
                                             <img src="{{ asset('storage/' . $item->item_image) }}" alt="No image">
                                         @endif
