@@ -59,9 +59,13 @@
                             @foreach($likedItems as $item)
                                 <a class="item__image" href="{{route('detail', $item->id)}}">
                                     @if ($item->item_image)
-                                        <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                                        @if (config('filesystems.default') === 's3')
+                                            <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
+                                        @else
+                                            <img src="{{ asset('storage/' . $item->item_image) }}" alt="No image">
+                                        @endif
                                     @else
-                                        <img src="">
+                                        <img src="" alt="No image">
                                     @endif
                                 </a>
                             @endforeach
