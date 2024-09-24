@@ -18,7 +18,7 @@
                                 @if (config('filesystems.default') === 's3')
                                     <img src="{{ Storage::disk('s3')->url($item->item_image) }}" alt="">
                                 @else
-                                    <img src="{{ asset('storage/' . $item->item_image) }}" alt="">
+                                    <img src="{{ asset('storage/' . $item->item_image) }}" alt="No image">
                                 @endif
                             @else
                                 <img src="" alt="No image">
