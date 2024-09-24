@@ -22,9 +22,9 @@
         <div class="profile__image">
             @if ($user->profile_image)
                 @if (config('filesystems.default') === 's3')
-                    <img src="{{ Storage::disk('s3')->url($user->profile_image) }}" alt="No image">
+                    <img src="{{ Storage::disk('s3')->url($user->profile_image) }}" >
                 @else
-                    <img src="{{ asset('storage/profile' . $user->profile_image) }}" alt="No image">
+                    <img src="{{ asset('storage/profile' . $user->profile_image) }}" >
                 @endif
             @else
                 <img alt="">

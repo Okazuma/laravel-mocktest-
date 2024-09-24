@@ -38,6 +38,7 @@
 .profile__image img {
     width: 100%;
     aspect-ratio: 1;
+    display: block;
     border-radius: 50%;
     background-color: #d3d3d3;
 }
